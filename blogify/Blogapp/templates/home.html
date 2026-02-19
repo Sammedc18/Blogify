@@ -14,7 +14,7 @@
       {{ post.short_description|truncatewords:25 }}
     </p>
     <p class="lead mb-0">
-      <a href="#" class="text-white font-weight-bold">
+      <a href="{% url  'blogs' post.slug  %}" class="text-white font-weight-bold">
         Continue reading...
       </a>
     </p>
