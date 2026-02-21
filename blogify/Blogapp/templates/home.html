@@ -14,7 +14,7 @@
       {{ post.short_description|truncatewords:25 }}
     </p>
     <p class="lead mb-0">
-      <a href="#" class="text-white font-weight-bold">
+      <a href="{% url 'blogs' post.slug %}" class="text-white font-weight-bold">
         Continue reading...
       </a>
     </p>
@@ -31,7 +31,7 @@
   <div class="col-md-6">
     <div class="card border-0">
       <div class="card-body">
-        <h3>{{ post.title }}</h3>
+        <h3> <a href="{% url 'blogs' post.slug %}" class="text-dark">{{ post.title }}</a></h3>
         <small class="mb-1 text-muted">{{ post.created_at | timesince }} ago | {{ post.author }}</small>
         <p class="card-text">{{ post.short_description | truncatewords:25}}</p>
       </div>
@@ -50,7 +50,7 @@
       {% for post in posts %}
       <div class="card border-0">
         <div class="card-body">
-          <h3>{{ post.title }}</h3>
+          <h3> <a href="{% url 'blogs' post.slug %}" class="text-dark">{{ post.title }}</a></h3>
           <small class="mb-1 text-muted">{{ post.created_at | timesince }} ago | {{ post.author }}</small>
           <p class="card-text">{{ post.short_description | truncatewords:25}}</p>
         </div>
@@ -66,21 +66,22 @@
     <!-- RIGHT : SIDEBAR -->
     <aside class="col-md-4 blog-sidebar">
       <div class="p-3 mb-3 bg-light rounded">
-        <h4>About</h4>
+        <h4>{{ about.about_heading }}</h4>
         <p>
-          Etiam porta sem malesuada magna mollis euismod.
-          Cras mattis consectetur purus sit amet fermentum.
-          Aenean lacinia bibendum nulla sed consectetur.
+          {{ about.about_description}}
         </p>
       </div>
 
+      {% if social_link %}
       <div class="p-3">
         <h4>Follow Us</h4>
         <ol class="list-unstyled">
-          <li><a href="#">GitHub</a></li>
-          <li><a href="#">LinkedIn</a></li>
+          {% for i in social_link %}
+          <li><a href="{{ i.link }}" target="_blank">{{ i.platform }}</a></li>
+          {% endfor %}
         </ol>
       </div>
+      {% endif %}
     </aside>
 
   </div>
