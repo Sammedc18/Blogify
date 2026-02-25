@@ -1,12 +1,12 @@
-
-
 from django.shortcuts import get_object_or_404, redirect, render
 
 from Blogapp.models import Blog, Category
 from django.contrib.auth.decorators import login_required
 
-from .forms import BlogPostForm, CategoryForm
+from .forms import  BlogPostForm, CategoryForm
 from django.template.defaultfilters import slugify
+from django.contrib.auth.models import User
+from .forms import AddUserForm
 
 
 @login_required(login_url = 'login')
@@ -25,7 +25,6 @@ def categories(request):
     return render(request, 'dashboard/categories.html')
 
 
-
 def add_category(request):
     if request.method == 'POST':
         form = CategoryForm(request.POST)
@@ -37,8 +36,6 @@ def add_category(request):
         'form':form
     }
     return render(request, 'dashboard/add_category.html',context)
-
-
 
 def edit_category(request,pk):
     category = get_object_or_404(Category, pk=pk)
@@ -60,7 +57,6 @@ def delete_category(request,pk):
     category = get_object_or_404(Category, pk=pk)
     category.delete()
     return redirect('categories') 
-
 
 
 def posts(request):
@@ -112,3 +108,19 @@ def delete_post(request, pk):
     post = get_object_or_404(Blog, pk=pk)
     post.delete()
     return redirect('posts')
+
+def users(request):
+    users = User.objects.all()
+    context = {
+        'users':users,
+    }
+    return render(request,'dashboard/users.html', context)
+
+
+def add_user(request):
+    form = AddUserForm()
+    context = {
+      'form': form,
+      }
+    return render(request, 'dashboard/add_user.html', context)
+   
