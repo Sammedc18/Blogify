@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from Blogapp.models import Blog, Category
 from django.contrib.auth.decorators import login_required
 
-from .forms import  BlogPostForm, CategoryForm
+from .forms import  BlogPostForm, CategoryForm, EditUserForm
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 from .forms import AddUserForm
@@ -116,11 +116,32 @@ def users(request):
     }
     return render(request,'dashboard/users.html', context)
 
-
 def add_user(request):
-    form = AddUserForm()
+    if request.method == "POST":
+        form = AddUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('users')
+    else:
+        form = AddUserForm()
+
     context = {
-      'form': form,
-      }
+        'form': form,
+    }
     return render(request, 'dashboard/add_user.html', context)
-   
+def edit_user(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    if request.method == 'POST':
+        form = EditUserForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect ('users')
+    form = EditUserForm(instance=user)
+    context ={
+        'form': form,
+    }
+    return render(request, 'dashboard/edit_user.html', context) 
+def delete_user(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    user.delete()
+    return redirect('users')

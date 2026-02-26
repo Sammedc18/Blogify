@@ -1,6 +1,7 @@
 from django.urls import path
 
 from . import views
+ 
 
 
 urlpatterns = [
@@ -20,4 +21,6 @@ urlpatterns = [
     #users
     path('users/', views.users, name='users'),
     path('users/add/', views.add_user, name='add_user'),
+    path('users/edit/<int:pk>/', views.edit_user, name='edit_user'),
+    path('users/delete/<int:pk>/', views.delete_user, name='delete_user'),
 ]
