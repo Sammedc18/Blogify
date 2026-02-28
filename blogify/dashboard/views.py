@@ -726,4 +726,4 @@ def delete_user(request, pk):
 
     return render(request, 'dashboard/delete_user.html', {
         'user': user
-    })
+    })  
