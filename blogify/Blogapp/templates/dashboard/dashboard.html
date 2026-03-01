@@ -4,35 +4,51 @@
 
 <div class="row">
 
-    <!-- left sidebar -->
-   
-    <!-- load sidebar -->
-
+    <!-- Sidebar -->
     {% include 'dashboard/sidebar.html' %}
 
-    <!-- right content -->
-     <div class="col-md-9">
-        <p>Logged in as <b>{{ user }}</b></p>
-        <div class="row">
-            <div class="col">
-                <div class="card border-default mb-3">
-                    <div class="card-header text-center text-uppercase font-weight-bold">All Categories</div>
-                    <div class="card-body text-dark">
-                        <h5 class="card-title text-center">{{ category_count }}</h5>
+    <!-- Right Content -->
+    <div class="col-md-9">
+
+        <div class="card border-0 shadow-sm rounded-4 p-4">
+
+            <p class="mb-4">
+                Logged in as 
+                <span class="fw-bold text-warning">{{ user }}</span>
+            </p>
+
+            <div class="row g-4">
+
+                <!-- Categories Count -->
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm rounded-4 text-center p-4 h-100">
+                        <h6 class="text-uppercase text-muted mb-3">
+                            All Categories
+                        </h6>
+                        <h2 class="fw-bold text-warning">
+                            {{ category_count }}
+                        </h2>
                     </div>
                 </div>
+
+                <!-- Posts Count -->
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm rounded-4 text-center p-4 h-100">
+                        <h6 class="text-uppercase text-muted mb-3">
+                            All Posts
+                        </h6>
+                        <h2 class="fw-bold text-warning">
+                            {{ blogs_count }}
+                        </h2>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="col">
-                <div class="card border-default mb-3">
-                    <div class="card-header text-center text-uppercase font-weight-bold">All posts</div>
-                    <div class="card-body text-dark">
-                        <h5 class="card-title text-center">{{ blogs_count }}</h5>
-                    </div>
-                </div>
-            </div>
         </div>
+
     </div>
+
 </div>
 
 {% endblock %}

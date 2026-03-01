@@ -1,0 +1,46 @@
+.login-wrapper {
+    max-width: 450px;
+    margin: auto;
+}
+
+.login-card {
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    border: none;
+}
+
+.login-title {
+    font-weight: 700;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #ddd;
+}
+
+.divider:not(:empty)::before {
+    margin-right: .75em;
+}
+
+.divider:not(:empty)::after {
+    margin-left: .75em;
+}
+
+.google-btn {
+    border-radius: 50px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.google-btn:hover {
+    background: #f8f9fa;
+}

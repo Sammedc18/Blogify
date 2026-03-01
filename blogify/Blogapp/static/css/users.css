@@ -1,0 +1,86 @@
+body{
+    background-color: #f4f6f9;
+    overflow-x: hidden;
+}
+
+/* Sidebar */
+.sidebar{
+    width: 220px;
+    height: 100vh;
+    background: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-top: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.sidebar h6{
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    letter-spacing: 3px;
+    font-size: 12px;
+    margin: auto;
+    margin-bottom: 30px;
+    color: #6c757d;
+}
+
+.sidebar a{
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 30px;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+.sidebar a.active{
+    background-color: #ffc107;
+    color: black;
+    font-weight: 500;
+}
+
+/* Main Content */
+.main{
+    margin-left: 240px;
+    padding: 30px;
+}
+
+.card-custom{
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.05);
+}
+
+/* Smaller Add Button */
+.add-btn{
+    background-color: #ffc107;
+    border: none;
+    padding: 6px 18px;   /* reduced padding */
+    border-radius: 25px;
+    font-size: 14px;     /* smaller font */
+    font-weight: 500;
+}
+
+.badge-active{
+    background: #28a745;
+}
+
+.badge-staff{
+    background: #17a2b8;
+}
+
+.badge-role{
+    background: #343a40;
+}
+
+.badge-normal{
+    background: #e9ecef;
+    color: #333;
+}
+
+.table th{
+    font-weight: 600;
+}

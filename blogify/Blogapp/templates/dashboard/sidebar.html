@@ -1,16 +1,43 @@
 <div class="col-md-3">
-    <div class="nav flex-column nav-pills bg-light" aria-orientation="vertical">
-        <a href="{% url 'dashboard' %}"
-            class="nav-link text-dark {% if '/dashboard/' == request.path %}bg-warning {% endif %}">Dashboard</a>
-        {% if perms.auth.view_user %}
-            <a href="{% url 'users' %}"
-            class="nav-link text-dark {% if '/users/' in request.path %}bg-warning {% endif %}">Users</a>
-        {% endif %}
-            <a href="{% url 'categories' %}"
-            class="nav-link text-dark {% if '/dashboard/categories/' == request.path %} bg-warning {% endif %}">Categories
-        </a>
-        <a href="{% url 'posts' %}" class="nav-link text-dark {% if '/dashboard/posts/' == request.path %} bg-warning {% endif %}">Posts</a>
-        <a href="#" class="nav-link text-dark ">Logout</a>
-    </div>
- </div>
 
+    <div class="card border-0 shadow-sm rounded-4 p-3">
+
+        <h6 class="text-uppercase text-muted mb-3" style="letter-spacing:1px;">
+            Admin Panel
+        </h6>
+
+        <div class="nav flex-column nav-pills">
+
+            <!-- Dashboard -->
+            <a href="{% url 'dashboard' %}"
+               class="nav-link rounded-pill mb-2 
+               {% if request.path == '/dashboard/' %} active bg-warning text-dark {% else %} text-dark {% endif %}">
+                <i class="fa fa-home mr-2"></i> Dashboard
+            </a>
+
+            <!-- Users -->
+            {% if perms.auth.view_user %}
+            <a href="{% url 'users' %}"
+               class="nav-link rounded-pill mb-2
+               {% if '/users/' in request.path %} active bg-warning text-dark {% else %} text-dark {% endif %}">
+                <i class="fa fa-users mr-2"></i> Users
+            </a>
+            {% endif %}
+
+            <!-- Categories -->
+            <a href="{% url 'categories' %}"
+               class="nav-link rounded-pill mb-2
+               {% if '/dashboard/categories/' in request.path %} active bg-warning text-dark {% else %} text-dark {% endif %}">
+                <i class="fa fa-folder mr-2"></i> Categories
+            </a>
+
+            <!-- Posts -->
+            <a href="{% url 'posts' %}"
+               class="nav-link rounded-pill mb-2
+               {% if '/dashboard/posts/' in request.path %} active bg-warning text-dark {% else %} text-dark {% endif %}">
+                <i class="fa fa-file-text mr-2"></i> Posts
+            </a>
+        </div>
+    </div>
+
+</div>

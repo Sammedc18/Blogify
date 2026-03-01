@@ -1,0 +1,30 @@
+.category-title {
+    font-weight: 700;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+}
+
+.category-title::after {
+    content: '';
+    width: 60%;
+    height: 3px;
+    background: #ffc107;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+}
+
+.post-card {
+    border-radius: 18px;
+    transition: 0.3s ease-in-out;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+}
+
+.read-btn {
+    border-radius: 50px;
+}

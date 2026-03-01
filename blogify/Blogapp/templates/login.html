@@ -1,14 +1,51 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
-<h3 class="text-center">Login</h3>
 
-{% load crispy_forms_tags %}
-<form action="{% url 'login' %}" method="POST" style="width:500px; margin:auto;">
-    {% csrf_token %}
-    {{ form | crispy }}
-    <button type="submit" class="btn btn-warning">Login</button>
-</form>
+
+<div class="login-wrapper mt-5 mb-5">
+
+    <div class="card login-card p-4">
+
+        <div class="text-center mb-4">
+            <h3 class="login-title">Welcome Back 👋</h3>
+            <p class="text-muted">Login to continue to Blogify</p>
+        </div>
+
+        <!-- Normal Login -->
+        <form method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            <button type="submit" class="btn btn-warning w-100 rounded-pill mt-3">
+                Login
+            </button>
+        </form>
+
+        <!-- Divider -->
+        <div class="divider">OR</div>
+
+        <!-- Google Login -->
+        <a href="#" 
+           class="btn btn-outline-dark w-100 google-btn d-flex align-items-center justify-content-center gap-2 rounded-pill">
+
+            <i class="fa-brands fa-google"></i>&nbsp;
+            Continue with Google
+        </a>
+
+        <div class="text-center mt-3">
+            <small>
+                Don't have an account?
+                <a href="{% url 'register' %}" class="text-warning fw-bold">
+                    Register
+                </a>
+            </small>
+        </div>
+
+    </div>
+
+</div>
 
 {% endblock %}

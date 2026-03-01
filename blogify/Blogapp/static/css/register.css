@@ -1,0 +1,24 @@
+.register-wrapper {
+    max-width: 500px;
+    margin: auto;
+}
+
+.register-card {
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    border: none;
+}
+
+.register-title {
+    font-weight: 700;
+}
+
+.register-card .form-control {
+    border-radius: 12px;
+}
+
+.register-btn {
+    border-radius: 50px;
+    font-weight: 600;
+    padding: 8px 0;
+}
